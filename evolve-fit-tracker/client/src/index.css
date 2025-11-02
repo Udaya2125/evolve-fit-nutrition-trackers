@@ -1,0 +1,530 @@
+/* --- Import a Modern Font --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* --- :root ---
+   We are refining the color palette for a cleaner,
+   more professional and "softer" UI.
+*/
+:root {
+  /* Font */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Refined Color Palette */
+  --c-bg: #F9F9F9; /* A softer, cleaner white for the background */
+  --c-white: #FFFFFF; /* Pure white for cards */
+  --c-beige: #F7F3EE; /* A very light, subtle beige for cards */
+  --c-green-primary: #588157; /* Your main green */
+  --c-green-dark: #3A5A40;
+  --c-green-light: #EBF2EA; /* A very light green for accents */
+  
+  --c-text-primary: #1C1C1E; /* A dark, soft black (not pure black) */
+  --c-text-secondary: #6B7280; /* A neutral gray for subtext */
+  --c-border: #ECECEC; /* A light border for separation */
+
+  /* Sizing */
+  --border-radius: 12px; /* A more modern, larger radius */
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* A softer shadow */
+}
+
+/* --- Basic CSS Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Global Styles --- */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--c-bg); /* Use new background color */
+  color: var(--c-text-primary);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  color: var(--c-text-primary); /* Changed from green for better readability */
+}
+
+a {
+  color: var(--c-green-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: var(--c-green-dark);
+}
+
+/* --- App Container --- */
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+/* --- Button Styles --- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--c-green-primary);
+  color: var(--c-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--c-green-dark);
+  transform: translateY(-2px); /* Add subtle hover effect */
+  box-shadow: 0 4px 10px rgba(88, 129, 87, 0.3);
+}
+
+/* --- Card Styles --- */
+.card {
+  background-color: var(--c-white); /* Use pure white for a cleaner look */
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--c-border);
+}
+
+/* --- Input Styles --- */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--c-border);
+  border-radius: var(--border-radius);
+  background-color: var(--c-bg);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-input:focus {
+  outline: none;
+  border-color: var(--c-green-primary);
+  box-shadow: 0 0 0 3px var(--c-green-light);
+}
+
+/*
+=========================================
+  COMPONENT-SPECIFIC STYLES
+  (Styles you added before, now refined)
+=========================================
+*/
+
+/* --- AddFood / LogFood Header --- */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.back-btn {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--c-text-secondary);
+  margin-right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
+  transition: all 0.2s;
+}
+.back-btn:hover {
+  background-color: var(--c-green-light);
+  color: var(--c-green-dark);
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* --- AddFood Search --- */
+.search-bar-container {
+  margin-bottom: 1.5rem;
+}
+
+.search-bar {
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+.results-list {
+  list-style-type: none;
+  border: 1px solid var(--c-border);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: var(--c-white);
+}
+
+.result-item a {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  color: var(--c-text-primary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--c-border);
+  transition: background-color 0.2s;
+}
+
+.result-item:last-child a {
+  border-bottom: none;
+}
+
+.result-item a:hover {
+  background-color: var(--c-green-light);
+}
+
+.food-name {
+  font-weight: 500;
+}
+
+.food-serving {
+  color: var(--c-text-secondary);
+  font-size: 0.9rem;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--c-text-secondary);
+  padding: 2rem;
+}
+
+/* --- Dashboard --- */
+.dashboard-header {
+  margin-bottom: 1rem;
+}
+
+.brand-title {
+  font-size: 2.25rem;
+  color: var(--c-green-dark);
+  font-weight: 700;
+  text-align: left;
+}
+
+.date-navigator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.current-date {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--c-text-primary);
+}
+
+.date-btn {
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--c-text-secondary);
+}
+.date-btn:hover {
+  background-color: var(--c-green-light);
+  color: var(--c-green-dark);
+}
+
+.calorie-card {
+  /* Using the light beige for this main card */
+  background-color: var(--c-beige); 
+  border: 1px solid var(--c-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+
+.calorie-progress-bar {
+  width: 120px;
+  height: 120px;
+}
+
+.calorie-progress-bar .CircularProgressbar-text {
+  font-size: 1.75rem;
+  font-weight: 700;
+  fill: var(--c-text-primary);
+}
+
+.calorie-text {
+  font-size: 1.5rem;
+  color: var(--c-text-secondary);
+  text-align: right;
+}
+
+.calorie-label {
+  font-size: 1.1rem;
+  margin-left: 5px;
+}
+
+.calorie-goal {
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--c-text-primary);
+  display: block;
+}
+
+/* --- Macro Grid --- */
+.macro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.macro-progress-bar-container {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--c-white); /* Use white for cards */
+  border: 1px solid var(--c-border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.macro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.macro-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--c-text-primary);
+}
+
+.macro-values {
+  font-size: 0.9rem;
+  color: var(--c-text-secondary);
+}
+
+.progress-bar-background {
+  width: 100%;
+  height: 8px;
+  background-color: var(--c-bg); /* Use light bg */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--c-green-primary);
+  border-radius: 4px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* --- Meal Cards --- */
+.meal-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.meal-card {
+  padding: 1rem;
+  background-color: var(--c-white);
+  border: 1px solid var(--c-border);
+}
+
+.meal-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.meal-card-header h3 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.add-meal-btn {
+  background-color: var(--c-green-light);
+  color: var(--c-green-dark);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 30px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
+}
+.add-meal-btn:hover {
+  background-color: var(--c-green-primary);
+  color: var(--c-white);
+  transform: scale(1.1);
+}
+
+/* --- Meal Card Lists --- */
+.meal-log-list {
+  list-style-type: none;
+  margin-top: 1rem;
+  padding-left: 0;
+}
+
+.log-item-mini {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.log-item-name-mini {
+  color: var(--c-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.log-item-actions-mini {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.log-item-calories-mini {
+  color: var(--c-text-secondary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+}
+
+.delete-log-btn-mini {
+  background: none;
+  border: none;
+  color: var(--c-text-secondary);
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  line-height: 18px;
+  padding: 0;
+}
+.delete-log-btn-mini:hover {
+  color: #d9534f;
+  background-color: #fef0f0;
+}
+
+.empty-log-mini {
+  font-size: 0.85rem;
+  color: var(--c-text-secondary);
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+
+/* --- LogFood Page --- */
+.log-details-card {
+  text-align: center;
+  background-color: var(--c-beige);
+}
+
+.food-title {
+  font-size: 1.75rem;
+  color: var(--c-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.food-serving-size {
+  font-size: 1rem;
+  color: var(--c-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.quantity-control {
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.quantity-control label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--c-text-secondary);
+}
+
+.quantity-input {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.75rem;
+  background-color: var(--c-white);
+}
+
+.nutrition-summary-card {
+  background-color: var(--c-white);
+}
+.nutrition-summary-card h4 {
+  text-align: center;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.nutrition-list {
+  list-style-type: none;
+}
+
+.nutrition-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.nutrition-list li:last-child {
+  border-bottom: none;
+}
+
+.nutrition-list li span:first-child {
+  color: var(--c-text-primary);
+  font-weight: 500;
+}
+
+.nutrition-list li span:last-child {
+  color: var(--c-green-primary);
+  font-weight: 600;
+}
+
+.btn-log-food {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+}
+
+.loading-text, .error-text {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.1rem;
+  color: var(--c-text-secondary);
+}

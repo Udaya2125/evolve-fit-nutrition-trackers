@@ -1,0 +1,19 @@
+{
+  "name": "evolve-fit-server",
+  "version": "1.0.0",
+  "description": "Backend API for Evolve Fit food tracker",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
